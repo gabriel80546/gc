@@ -5,21 +5,29 @@
 
 t_list	*ponteiros;
 
-int	main_gc(int argc, char **argv, char **envp);
+//int	main_gc(int argc, char **argv, char **envp);
 int	main(int argc, char **argv, char **envp)
 {
-	int saida;
-	gc_init();
-	saida = main_gc(argc, argv, envp);
-	gc_end();
-	return (saida);
-}
+	char *str;
 
-int	main_gc(int argc, char **argv, char **envp)
-{
+	gc_init();
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
+	str = (char *)ft_malloc(200);
 	printf("str = %s\n", ft_strdup("asdfj"));
+	printf("str = %s\n", ft_strdup(ft_strdup(ft_strdup("asdfj"))));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
 	printf("str = %s\n", ft_strdup("asdfj"));
-	printf("str = %s\n", ft_strdup("asdfj"));
-	printf("str = %s\n", ft_strdup("asdfj"));
+	gc_end();
 	return (0);
 }
