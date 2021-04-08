@@ -5,7 +5,6 @@
 
 t_list	*ponteiros;
 
-//int	main_gc(int argc, char **argv, char **envp);
 void	teste(void);
 int	main(int argc, char **argv, char **envp)
 {
@@ -26,12 +25,17 @@ int	main(int argc, char **argv, char **envp)
 	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
 	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
 	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
-	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
-	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin(ft_strjoin("aksdhf", "asdkjfhsajdf"), "asdkjfhsajdf"));
+	printf("str = %s\n", ft_strjoin("aksdhf", ft_strjoin("aksdhf", "asdkjfhsajdf")));
 	printf("str = %s\n", ft_strjoin("aksdhf", "asdkjfhsajdf"));
 	printf("str = %s\n", ft_strdup("asdfj"));
 	gc_end();
 	return (0);
+}
+
+void save(void)
+{
+	printf("excuse\n");
 }
 
 void split_test(char *fim)
@@ -43,6 +47,7 @@ void split_test(char *fim)
 	i = 0;
 	while (strings[++i] != NULL)
 		printf("strings[%i] = '%s'\n", i, strings[i]);
+	save();
 }
 
 void	teste(void)
