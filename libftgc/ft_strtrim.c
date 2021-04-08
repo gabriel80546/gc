@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/18 08:29:07 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/18 08:29:10 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
 #include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*saida;
 	int		i;
+	int		inicio;
 
-	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
-	while (*((char *)s + i) != '\0')
+	i = 0;
+	while (*(s1 + i) != '\0')
 	{
-		*(saida + i) = *((char *)s + i);
+		if (ft_strchr(set, *(s1 + i)) == 0)
+			break ;
 		i++;
 	}
-	*(saida + i) = '\0';
-	return (saida);
+	inicio = i;
+	i = ft_strlen(s1) - 1;
+	while (i >= 0)
+	{
+		if (ft_strchr(set, *(s1 + i)) == 0)
+			break ;
+		i--;
+	}
+	if (i <= inicio)
+		i = (inicio + 1);
+	return (ft_substr(s1, inicio, i - inicio + 1));
 }

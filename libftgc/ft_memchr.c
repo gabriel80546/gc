@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:57:59 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:58:02 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
-#include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
+	size_t	contador;
 	char	*saida;
-	int		i;
 
-	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
-		return (NULL);
-	while (*((char *)s + i) != '\0')
+	saida = (char *)s;
+	contador = 0;
+	while (contador < n)
 	{
-		*(saida + i) = *((char *)s + i);
-		i++;
+		if (*(saida) == (char)c)
+			return (saida);
+		saida++;
+		contador++;
 	}
-	*(saida + i) = '\0';
-	return (saida);
+	return (NULL);
 }

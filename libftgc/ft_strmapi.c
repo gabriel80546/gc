@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:51 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:53 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:59:08 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:59:10 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,20 @@
 #include <stdlib.h>
 #include "gc.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*saida;
 	int		contador;
-	int		next;
+	char	*saida;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s == NULL || f == NULL)
 		return (NULL);
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (saida == NULL)
 		return (NULL);
-	next = 0;
 	contador = 0;
-	while (*((char *)s1 + contador) != '\0')
+	while (*(s + contador) != '\0')
 	{
-		*(saida + contador) = *((char *)s1 + contador);
-		contador++;
-	}
-	while (*((char *)s2 + next) != '\0')
-	{
-		*(saida + contador) = *((char *)s2 + next);
-		next++;
+		*(saida + contador) = f(contador, *((char *)s + contador));
 		contador++;
 	}
 	*(saida + contador) = '\0';

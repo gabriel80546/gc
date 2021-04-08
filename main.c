@@ -34,6 +34,17 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
+void split_test(char *fim)
+{
+	char	**strings;
+	int		i;
+
+	strings = ft_split(fim, ' ');
+	i = 0;
+	while (strings[++i] != NULL)
+		printf("strings[%i] = '%s'\n", i, strings[i]);
+}
+
 void	teste(void)
 {
 	char	*fim;
@@ -41,11 +52,12 @@ void	teste(void)
 
 	i = 0;
 	fim = ft_strdup("");
-	while (i < 1000)
+	while (i < 100)
 	{
 		fim = ft_strjoin(fim, "a, ");
 		i++;
 	}
 	printf("fim = %s\n", fim);
+	split_test(fim);
 }
 

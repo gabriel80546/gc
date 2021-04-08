@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:57:42 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:57:44 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
-#include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+int		ft_isdigit(int c)
 {
-	char	*saida;
-	int		i;
-
-	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
-		return (NULL);
-	while (*((char *)s + i) != '\0')
-	{
-		*(saida + i) = *((char *)s + i);
-		i++;
-	}
-	*(saida + i) = '\0';
-	return (saida);
+	if ((c >= '0') && (c <= '9'))
+		return (1);
+	else
+		return (0);
 }

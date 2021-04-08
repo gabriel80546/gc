@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:59:16 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:59:18 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
-#include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strnstr(const char *big, const char *l, size_t len)
 {
-	char	*saida;
-	int		i;
+	size_t	i;
 
+	if (ft_strlen(l) == 0)
+		return ((char *)big);
 	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
-		return (NULL);
-	while (*((char *)s + i) != '\0')
+	while (*(big + i) != '\0' && i < len)
 	{
-		*(saida + i) = *((char *)s + i);
+		if (*(big + i) == *(l + 0))
+		{
+			if (ft_strncmp(((char *)big + i), l, ft_strlen(l)) == 0)
+			{
+				if ((i + ft_strlen(l)) > len)
+					return (NULL);
+				else
+					return ((char *)big + i);
+			}
+		}
 		i++;
 	}
-	*(saida + i) = '\0';
-	return (saida);
+	return (NULL);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:57:54 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:57:56 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
-#include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	char	*saida;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
-		return (NULL);
-	while (*((char *)s + i) != '\0')
+	while (i < n)
 	{
-		*(saida + i) = *((char *)s + i);
+		if (*((char *)src + i) == (char)c)
+		{
+			*((unsigned char *)dest + i) = *((char *)src + i);
+			return (dest + i + 1);
+		}
+		*((unsigned char *)dest + i) = *((unsigned char *)src + i);
 		i++;
 	}
-	*(saida + i) = '\0';
-	return (saida);
+	return (NULL);
 }

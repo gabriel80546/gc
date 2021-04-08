@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:58:47 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/02/17 10:58:48 by gpassos-         ###   ########.fr       */
+/*   Created: 2021/02/17 10:59:12 by gpassos-          #+#    #+#             */
+/*   Updated: 2021/02/17 10:59:14 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftgc.h"
-#include <stdlib.h>
-#include "gc.h"
 
-char	*ft_strdup(const char *s)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*saida;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	saida = (char *)ft_malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (saida == NULL)
-		return (NULL);
-	while (*((char *)s + i) != '\0')
+	while (i < n)
 	{
-		*(saida + i) = *((char *)s + i);
+		if (*((unsigned char *)s1 + i) != *((unsigned char *)s2 + i))
+			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+		if (*((unsigned char *)s1 + i) == '\0')
+			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+		if (*((unsigned char *)s2 + i) == '\0')
+			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
 		i++;
 	}
-	*(saida + i) = '\0';
-	return (saida);
+	return (0);
 }
