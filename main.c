@@ -10,15 +10,13 @@ t_list	*ponteiros;
 void	teste(void);
 void	fun(void);
 void	test_gclista(void);
-int	main(int argc, char **argv, char **envp)
+int	main(/*int argc, char **argv, char **envp*/)
 {
 	char *str;
 
 	gc_init();
 	test_gclista();
 	teste();
-
-
 
 	str = (char *)ft_malloc(200);
 	str = (char *)ft_malloc(200);
