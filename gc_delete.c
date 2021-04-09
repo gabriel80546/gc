@@ -14,7 +14,7 @@ void	gc_delete(void *ptr)
 	temp = first_item(ponteiros);
 	while (temp != NULL)
 	{
-		if (temp->data == ptr);
+		if (temp->data == ptr)
 			to_delete = temp;
 		temp = temp->next;
 	}
