@@ -15,9 +15,9 @@ t_gc_list	*gc_list_delone_free(t_gc_list *lista)
 		return (NULL);
 	if (lista->prev == NULL && lista->next == NULL)
 	{
-		free(lista->data);
+		gc_delete(lista->data);
 		lista->data = NULL;
-		free(lista);
+		gc_delete(lista);
 		lista = NULL;
 		return (NULL);
 	}
@@ -27,7 +27,7 @@ t_gc_list	*gc_list_delone_free(t_gc_list *lista)
 		lista->next = temp_list_b;
 	}
 	lista = temp_list_c;
-	free(lista->data);
+	gc_delete(lista->data);
 	lista->data = NULL;
 	if (lista->next != NULL)
 	{
@@ -36,7 +36,7 @@ t_gc_list	*gc_list_delone_free(t_gc_list *lista)
 	}
 	else
 		lista = lista->prev;
-	free(temp_list_c);
+	gc_delete(temp_list_c);
 	temp_list_c = NULL;
 	return (lista);
 }

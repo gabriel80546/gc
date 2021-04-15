@@ -10,7 +10,7 @@ void	gc_clear_list_all(t_gc_list *lista)
 	{
 		last = lista;
 		lista = lista->next;
-		free(last->data);
-		free(last);
+		gc_delete(last->data);
+		gc_delete(last);
 	}
 }

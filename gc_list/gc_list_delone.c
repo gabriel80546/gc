@@ -16,7 +16,7 @@ t_gc_list	*gc_list_delone(t_gc_list *lista)
 	if (lista->prev == NULL && lista->next == NULL)
 	{
 		lista->data = NULL;
-		free(lista);
+		gc_delete(lista);
 		lista = NULL;
 		return (NULL);
 	}
@@ -34,7 +34,7 @@ t_gc_list	*gc_list_delone(t_gc_list *lista)
 	}
 	else
 		lista = lista->prev;
-	free(temp_list_c);
+	gc_delete(temp_list_c);
 	temp_list_c = NULL;
 	return (lista);
 }

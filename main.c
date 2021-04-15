@@ -18,8 +18,6 @@ int	main(int argc, char **argv, char **envp)
 	test_gclista();
 	teste();
 
-
-
 	str = (char *)ft_malloc(200);
 	str = (char *)ft_malloc(200);
 	str = (char *)ft_malloc(200);

@@ -10,6 +10,6 @@ void	gc_clear_list(t_gc_list *lista)
 	{
 		last = lista;
 		lista = lista->next;
-		free(last);
+		gc_delete(last);
 	}
 }
